@@ -20,6 +20,7 @@
   "devDependencies": {
     "@quasar/app-webpack": "^3.0.0",
     "@types/node": "^12.20.21",
+    "cypress": "^9.6.1",
     "electron": "^18.2.0"
   },
   "browserslist": [
