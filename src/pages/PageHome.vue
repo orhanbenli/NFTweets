@@ -107,103 +107,54 @@
   </q-page>
 </template>
 
-<script lang="ts">
-import firebase from "firebase";
-import { useFirestoreCollection } from "@gcto/firebase-hooks";
+<script>
 import { formatDistance } from "date-fns";
-import { defineComponent } from "@vue/composition-api";
-import { ref } from "@vue/composition-api";
 
-export default defineComponent({
+export default {
   name: "PageHome",
-  setup() {
-    type NFTweet = {
-      content: string;
-      date: string;
-    };
-    const newNFTweetsContent = ref("Placeholder_text"); 
-    const NFTweets = [];
-    const relativeDate = (value) => {
-      return formatDistance(value, new Date());
-    };
-    const addNewNFTweet = () => {
-      const newNFTweet = {
-        content: newNFTweetsContent,
-        date: Date.now(),
-      };
-      NFTweets.unshift(newNFTweet);
-      newNFTweetsContent = "";
-    };
-    const deleteNFTweet = (NFTweet) => {
-      const dateToDelete = NFTweet.date;
-      const index = NFTweets.findIndex(
-        (NFTweet) => NFTweet.date === dateToDelete
-      );
-      NFTweets.splice(index, 1);
-    };
-    const result = useFirestoreCollection<NFTweet>("NFTweets");
+  data() {
     return {
-      newNFTweetsContent,
-      NFTweets,
-      relativeDate,
-      addNewNFTweet,
-      deleteNFTweet,
+      newNFTweetsContent: "",
+      NFTweets: [
+        {
+          content:
+            "Innovation distinguishes between a leader and a follower. --Steve Jobs",
+          date: 1651789459438,
+        },
+        {
+          content:
+            "I will tell you the secret to getting rich on Wall Street. You try to be greedy when others are fearful. And you try to be fearful when others are greedy. --Warren Buffett",
+          date: 1651763276737,
+        },
+        {
+          content:
+            "An investment in knowledge pays the best interest. --Benjamin Franklin",
+          date: 1651756855140,
+        },
+      ],
     };
   },
-});
-
-// export default {
-//   name: "PageHome",
-//   data() {
-//     type NFTweet = {
-//       content: string;
-//       date: string;
-//     };
-//     return {
-//       newNFTweetsContent: "",
-//       NFTweets: [
-//         {
-//           content:
-//             "Innovation distinguishes between a leader and a follower. --Steve Jobs",
-//           date: 1651789459438,
-//         },
-//         {
-//           content:
-//             "I will tell you the secret to getting rich on Wall Street. You try to be greedy when others are fearful. And you try to be fearful when others are greedy. --Warren Buffett",
-//           date: 1651763276737,
-//         },
-//         {
-//           content:
-//             "An investment in knowledge pays the best interest. --Benjamin Franklin",
-//           date: 1651756855140,
-//         },
-//       ],
-//     };
-//   },
-//   methods: {
-//     relativeDate(value) {
-//       return formatDistance(value, new Date());
-//     },
-//     addNewNFTweet() {
-//       let newNFTweet = {
-//         content: this.newNFTweetsContent,
-//         date: Date.now(),
-//       };
-//       this.NFTweets.unshift(newNFTweet);
-//       this.newNFTweetsContent = "";
-//     },
-//     deleteNFTweet(NFTweet) {
-//       let dateToDelete = NFTweet.date;
-//       let index = this.NFTweets.findIndex(
-//         (NFTweet) => NFTweet.date === dateToDelete
-//       );
-//       this.NFTweets.splice(index, 1);
-//     },
-//   },
-//   mounted() {
-//     result = useFirestoreCollection<NFTweet>("NFTweets");
-//   },
-// };
+  methods: {
+    relativeDate(value) {
+      return formatDistance(value, new Date());
+    },
+    addNewNFTweet() {
+      let newNFTweet = {
+        content: this.newNFTweetsContent,
+        date: Date.now(),
+      };
+      this.NFTweets.unshift(newNFTweet);
+      this.newNFTweetsContent = "";
+    },
+    deleteNFTweet(NFTweet) {
+      let dateToDelete = NFTweet.date;
+      let index = this.NFTweets.findIndex(
+        (NFTweet) => NFTweet.date === dateToDelete
+      );
+      this.NFTweets.splice(index, 1);
+    },
+  },
+};
 </script>
 
 <style lang="sass">

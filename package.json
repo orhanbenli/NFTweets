@@ -9,11 +9,10 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@gcto/firebase-hooks": "^0.0.7",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "date-fns": "^2.28.0",
-    "firebase": "^8.7.0",
+    "firebase": "^9.7.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
