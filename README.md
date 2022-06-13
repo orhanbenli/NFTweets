@@ -1,6 +1,9 @@
-# NFTweets (nftweets)
+# NFTweets
 
-Author Orhan Benli
+NFTweets is a platform where you can share your tweets, news and ideas about NFTs!
+
+# Screenshots
+
 
 ## Install the dependencies
 ```bash
